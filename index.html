@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Digiwin 客戶覆蓋地圖</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main id="app"><div class="cv-msg">載入中… Đang tải…</div></main>
+<aside id="config" aria-label="Cấu hình">
+  <h2>Cấu hình bản đồ độ phủ</h2>
+  <label for="cfg-table">Bảng dữ liệu</label>
+  <select id="cfg-table"></select>
+  <p class="cfg-help">Chọn <b>Account Registry</b>. Bảng cần 4 cột do R1 Registry Sync ghi: Cov Key, Cov Count, Cov Customer, Cov SDR.</p>
+  <label for="cfg-tam">TAM (JSON, sửa khi có snapshot mới)</label>
+  <textarea id="cfg-tam" rows="12" spellcheck="false"></textarea>
+  <p class="cfg-help">rows = [phân khúc FDI / LOCAL / TH, vùng, số TAM].</p>
+  <p id="cfg-status" class="cfg-status" role="status"></p>
+  <button id="cfg-save" type="button">確定 Lưu</button>
+</aside>
+<script type="module" src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+/* Màu: sáng / tối theo theme dashboard (data-theme do main.js đặt) */
+:root { --cv-bg: #ffffff; --cv-panel: #f7f8fa; --cv-fg: #1f2329; --cv-muted: #646a73; --cv-line: #dee0e3; --cv-accent: #3370ff;
+  --cv-warn: #b26a00; --cv-bad: #d83931; --cv-pop: #ffffff; --cv-radius: 8px; color-scheme: light; }
+:root[data-theme="dark"] { --cv-bg: #1a1a1a; --cv-panel: #232323; --cv-fg: #ebebeb; --cv-muted: #a6a6a6; --cv-line: #3a3a3a; --cv-accent: #4c88ff;
+  --cv-warn: #f0b429; --cv-bad: #f76964; --cv-pop: #2b2b2b; color-scheme: dark; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--cv-bg); color: var(--cv-fg); font: 13px/1.5 -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", "Segoe UI", Roboto, sans-serif; }
+#app { padding: 16px; }
+#config { display: none; }
+body.is-config { display: grid; grid-template-columns: minmax(0, 1fr) 300px; height: 100vh; }
+body.is-config #app { overflow: auto; }
+body.is-config #config { display: flex; flex-direction: column; gap: 8px; padding: 16px; border-left: 1px solid var(--cv-line); overflow: auto; background: var(--cv-panel); }
+#config h2 { font-size: 15px; margin: 0 0 4px; }
+#config label { font-weight: 600; font-size: 12px; }
+#config select, #config textarea { font: inherit; font-size: 12px; width: 100%; padding: 6px; border: 1px solid var(--cv-line); border-radius: 6px; background: var(--cv-bg); color: var(--cv-fg); }
+#config textarea { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px; }
+#config button { font: inherit; padding: 8px; border: 0; border-radius: 6px; background: var(--cv-accent); color: #fff; cursor: pointer; margin-top: auto; }
+.cfg-help, .cfg-status { font-size: 12px; color: var(--cv-muted); margin: 0; }
+.cv { display: flex; flex-direction: column; gap: 20px; max-width: 1280px; margin: 0 auto; }
+.cv-title { font-size: 20px; font-weight: 600; margin: 0; }
+.cv-take { margin: 6px 0 0; max-width: 80ch; }
+.cv-num { font-variant-numeric: tabular-nums; }
+.cv-block { display: flex; flex-direction: column; gap: 12px; }
+.cv-block-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; }
+.cv-h2 { font-size: 17px; font-weight: 600; margin: 0; }
+.cv-h2 small { color: var(--cv-muted); font-weight: 400; margin-left: 4px; font-size: 13px; }
+.cv-chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.cv-chip { font: inherit; font-size: 12px; padding: 3px 12px; border-radius: 999px; border: 1px solid var(--cv-line); background: var(--cv-bg); color: var(--cv-fg); cursor: pointer; }
+.cv-chip[aria-pressed="true"] { background: var(--cv-fg); color: var(--cv-bg); border-color: var(--cv-fg); }
+.cv-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+.cv-kpi { background: var(--cv-panel); border: 1px solid var(--cv-line); border-radius: var(--cv-radius); padding: 10px 14px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.cv-kpi-label, .cv-kpi-note, .cv-hint { font-size: 12px; color: var(--cv-muted); }
+.cv-kpi-value { font-size: 24px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.25; }
+.cv-card { background: var(--cv-panel); border: 1px solid var(--cv-line); border-radius: var(--cv-radius); padding: 14px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.cv-card-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; }
+.cv-h3 { font-size: 14px; font-weight: 600; margin: 0; }
+.cv-h3 .cv-hint { font-weight: 400; margin-left: 6px; }
+.cv-mapgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; align-items: start; }
+.cv-mapbox { position: relative; min-width: 0; }
+.cv-mapbox svg { width: 100%; height: auto; max-height: 560px; display: block; }
+.cv-mapbox path { stroke: var(--cv-bg); stroke-width: .6; vector-effect: non-scaling-stroke; cursor: pointer; }
+.cv-mapbox path:hover { stroke: var(--cv-fg); stroke-width: 1.4; }
+.cv-legend { display: flex; flex-wrap: wrap; gap: 8px; font-size: 12px; color: var(--cv-muted); margin-top: 6px; }
+.cv-legend span { display: inline-flex; align-items: center; gap: 4px; }
+.cv-legend i { width: 14px; height: 10px; border-radius: 2px; display: inline-block; }
+.cv-tip { position: absolute; pointer-events: none; background: var(--cv-pop); border: 1px solid var(--cv-line); box-shadow: 0 4px 12px rgba(0,0,0,.12); border-radius: 6px; padding: 6px 10px; font-size: 12px; min-width: 150px; z-index: 2; }
+.cv-tip[hidden] { display: none; }
+.cv-tip span { color: var(--cv-muted); }
+.cv-tablewrap { overflow-x: auto; min-width: 0; }
+.cv-table { width: 100%; border-collapse: collapse; font-size: 12px; font-variant-numeric: tabular-nums; }
+.cv-table th { text-align: right; font-weight: 600; color: var(--cv-muted); padding: 5px 8px; border-bottom: 1px solid var(--cv-line); white-space: nowrap; }
+.cv-table td { text-align: right; padding: 5px 8px; border-bottom: 1px solid var(--cv-line); white-space: nowrap; }
+.cv-table th:first-child, .cv-table td:first-child { text-align: left; }
+.cv-table td.cv-name { white-space: normal; min-width: 120px; }
+.cv-table td.cv-name small { color: var(--cv-muted); display: block; }
+.cv-bar { display: inline-block; height: 8px; border-radius: 2px; vertical-align: middle; margin-left: 6px; background: var(--cv-accent); opacity: .5; }
+.cv-pill { display: inline-block; font-size: 11px; padding: 0 6px; border-radius: 999px; border: 1px solid var(--cv-line); color: var(--cv-muted); margin-left: 4px; }
+.cv-table tr.cv-out td { color: var(--cv-muted); }
+.cv-over { color: var(--cv-warn); }
+.cv-err { color: var(--cv-bad); }
+.cv-msg { padding: 24px; text-align: center; color: var(--cv-muted); }
+.cv-more { font: inherit; font-size: 12px; background: none; border: 0; padding: 4px 0; color: var(--cv-fg); text-decoration: underline; cursor: pointer; }
+.cv-notes { font-size: 12px; color: var(--cv-muted); }
+.cv-notes summary { cursor: pointer; color: var(--cv-fg); }
+.cv-notes ul { padding-left: 18px; margin: 6px 0 0; }
+.cv-foot { font-size: 11px; color: var(--cv-muted); margin: 0; }
