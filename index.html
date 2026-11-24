@@ -13,12 +13,13 @@
   <label for="cfg-table">Bảng dữ liệu</label>
   <select id="cfg-table"></select>
   <p class="cfg-help">Chọn <b>Account Registry</b>. Bảng cần 4 cột do R1 Registry Sync ghi: Cov Key, Cov Count, Cov Customer, Cov SDR.</p>
-  <label for="cfg-tam">TAM (JSON, sửa khi có snapshot mới)</label>
-  <textarea id="cfg-tam" rows="12" spellcheck="false"></textarea>
-  <p class="cfg-help">rows = [phân khúc FDI / LOCAL / TH, vùng, số TAM].</p>
+  <label for="cfg-tam-table">Bảng TAM</label>
+  <select id="cfg-tam-table"></select>
+  <p id="cfg-tam-info" class="cfg-help"></p>
+  <p class="cfg-help">Chọn <b>Market_Coverage_Snapshot</b> — bảng đồng bộ từ base 市場潛量, Lark tự cập nhật; extension lấy snapshot mới nhất.</p>
   <p id="cfg-status" class="cfg-status" role="status"></p>
   <button id="cfg-save" type="button">確定 Lưu</button>
 </aside>
-<script type="module" src="./app.js?v=2"></script>
+<script type="module" src="./app.js?v=3"></script>
 </body>
 </html>
