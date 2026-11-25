@@ -18,7 +18,7 @@ body.is-config #config { display: flex; flex-direction: column; gap: 8px; paddin
 .cfg-help, .cfg-status { font-size: 12px; color: var(--cv-muted); margin: 0; }
 .cv { display: flex; flex-direction: column; gap: 20px; max-width: 1280px; margin: 0 auto; }
 .cv-title { font-size: 20px; font-weight: 600; margin: 0; }
-.cv-take { margin: 6px 0 0; max-width: 80ch; }
+.cv-take { margin: 0; max-width: 80ch; font-size: 14px; }
 .cv-num { font-variant-numeric: tabular-nums; }
 .cv-block { display: flex; flex-direction: column; gap: 12px; }
 .cv-block-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; }
